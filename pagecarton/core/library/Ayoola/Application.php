@@ -944,6 +944,13 @@ class Ayoola_Application
 
     public static function getDeviceUId()
     {
+
+        if( headers_sent() )
+        {
+            //  if headers already sent like in Ayoola/Doc/Adapter/Abstract.php:486
+            return false;
+        }
+
         // device id
         if( empty( $_COOKIE['__duuid'] ) )
         {
